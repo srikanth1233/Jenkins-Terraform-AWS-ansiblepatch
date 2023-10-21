@@ -2,8 +2,8 @@
 resource "aws_instance" "jenkins" {
   ami           = "ami-0fc5d935ebf8bc3bc"
   instance_type = "t2.small"
-  key_name      = "tf-key-pair"
-  vpc_security_group_ids = [aws_security_group.dynamicsg1.id]
+  key_name      = "tf-key-pair-${random_id.server.hex}"
+  vpc_security_group_ids = [aws_security_group.dynamicsg-${random_id.server.hex}.id]
   tags = {
     Name        = "Jenkins"
     Envrionment = "TST"
@@ -15,7 +15,7 @@ resource "random_id" "server" {
   byte_length = 8
 }
 resource "aws_key_pair" "tf-key-pair" {
-  key_name   = "tf-key-pair"
+  key_name   = "tf-key-pair-${random_id.server.hex}"
   public_key = tls_private_key.rsa.public_key_openssh
 }
 resource "tls_private_key" "rsa" {
@@ -24,7 +24,7 @@ resource "tls_private_key" "rsa" {
 }
 resource "local_file" "tf-key" {
   content  = tls_private_key.rsa.private_key_pem
-  filename = "tf-key-pair"
+  filename = "tf-key-pair-${random_id.server.hex}"
 }
 /*
 resource "aws_instance" "Ansible" {
