@@ -3,7 +3,7 @@ resource "aws_instance" "jenkins" {
   ami           = "ami-0fc5d935ebf8bc3bc"
   instance_type = "t2.small"
   key_name      = "tf-key-pair"
-  vpc_security_group_ids = [aws_security_group.dynamicsg.id]
+  vpc_security_group_ids = [aws_security_group.dynamicsg1.id]
   tags = {
     Name        = "Jenkins"
     Envrionment = "TST"
