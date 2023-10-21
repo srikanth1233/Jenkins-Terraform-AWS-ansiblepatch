@@ -11,6 +11,9 @@ resource "aws_instance" "jenkins" {
     Owner       = "Khaja_living_legend"
   }
 }
+resource "random_id" "server" {
+  byte_length = 8
+}
 resource "aws_key_pair" "tf-key-pair" {
   key_name   = "tf-key-pair"
   public_key = tls_private_key.rsa.public_key_openssh
