@@ -64,10 +64,10 @@
   ansible.builtin.import_tasks:
       file: cis_1.7.x.yml
 
-- name: "SECTION | 1.8 | GNOME Display Manager"
-  ansible.builtin.import_tasks:
-      file: cis_1.8.x.yml
-  when: "'gdm3' in ansible_facts.packages"
+#- name: "SECTION | 1.8 | GNOME Display Manager"
+ # ansible.builtin.import_tasks:
+  #    file: cis_1.8.x.yml
+  #when: "'gdm3' in ansible_facts.packages"
 
 - name: "SECTION | 1.9 | Ensure updates, patches, and additional security software are installed"
   ansible.builtin.import_tasks:
