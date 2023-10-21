@@ -4,7 +4,7 @@ variable "sg_ports" {
   default     = [8080,22,80,443]
 }
 
-resource "aws_security_group" "dynamicsg1-${random_id.server.hex}" {
+resource "aws_security_group" "dynamicsg1" {
   name        = "dynamic-sg1-${random_id.server.hex}"
   description = "Ingress for Vault"
 
