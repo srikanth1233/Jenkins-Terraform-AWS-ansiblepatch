@@ -1,3 +1,4 @@
+/*
 variable "sg_ports" {
   type        = list(number)
   description = "list of ingress ports"
@@ -29,3 +30,4 @@ resource "aws_security_group" "dynamicsg1" {
     }
   }
 }
+*/
